@@ -1,0 +1,8 @@
+<%= @question.title %>, By: <%= @question.user.username %>
+
+
+<% @answers.each do |answer| %>
+  <%= answer.content %>By: <%= answer.user.username %>
+<% end %>
+
+<%= link_to "Add Answer", new_question_answer_path(@question) %>

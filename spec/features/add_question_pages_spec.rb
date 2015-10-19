@@ -22,4 +22,11 @@ describe 'the add a question process' do
     expect(page).to have_content 'Which is the best dog?'
     expect(page).to have_content @user.username
   end
+
+  it 'throws an error if title isn\'t filled in' do
+    visit questions_path
+    click_on 'Ask Question'
+    click_on 'Ask Question'
+    expect(page).to have_content 'errors'
+  end
 end
