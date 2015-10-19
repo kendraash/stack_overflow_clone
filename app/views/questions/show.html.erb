@@ -5,9 +5,12 @@
 
 
 <% @answers.each do |answer| %>
-  <p>
-    <%= answer.content %> By: <%= answer.user.username %>
-  </p>  
+  <pre>
+    <%= answer.content %>
+  </pre>
+  By: <%= answer.user.username %>
+  <i><%= answer.created_at.strftime("created on %m/%d/%Y at %I:%M%p") %></i>
+  <hr>
 <% end %>
 
 <%= link_to "Add Answer", new_question_answer_path(@question) %>

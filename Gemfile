@@ -8,6 +8,7 @@ gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'bcrypt'
+gem 'bootstrap-sass'
 
 group :development do
   gem 'byebug'

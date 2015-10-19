@@ -13,8 +13,9 @@
         <a class="navbar-brand" href="/">Stack Overflow</a>
       </div>
 
-       <ul class="nav navbar-nav">
+       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
+          <li><%= link_to 'Your Profile', user_path(current_user) %></li>
           <li><%= link_to "Sign Out", sign_out_path %></li>
         <% else %>
           <li><%= link_to "Sign Up", new_user_path %></li>

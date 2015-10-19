@@ -1,0 +1,22 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+$font-stack:    Helvetica, sans-serif;
+$primary-color:  #21360d;
+$secondary-color: #c5c9a8;
+
+.navbar-brand {
+  font-size: 2.5em;
+}
+
+a {
+  color: $primary-color;
+}
+
+a:hover {
+  color: $secondary-color;
+}
+body  {
+  font: $font-stack;
+  color: $primary-color;
+}

@@ -6,6 +6,9 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
     @question.user = current_user
+    unless @question.title.scan(/[?]/).any?
+      @question.title += "?"
+    end
 
     if @question.save
       flash[:notice] = "Question added successfully!"
@@ -21,7 +24,7 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
-    @answers = @question.answers  
+    @answers = @question.answers
   end
 
   private
