@@ -14,13 +14,14 @@ end
 #   describe '#current_user' do
 #     it 'returns the current user' do
 #       @user = FactoryGirl.create(:user)
-#       visit users_path
-#       click_on "Sign In"
-#       fill_in 'Email', :with => @user.email
-#       fill_in 'Password', :with => 'foo'
-#       click_on "Sign In"
+#       # visit users_path
+#       # click_on "Sign In"
+#       # fill_in 'Email', :with => @user.email
+#       # fill_in 'Password', :with => 'foo'
+#       # click_on "Sign In"
 #       get :index
-#       expect(controller.current_user).to eq @user
+#       binding.pry
+#       expect(current_user).to eq @user
 #     end
 #   end
 # end

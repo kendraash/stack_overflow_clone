@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :users
+  resources :users do
+    resources :questions
+  end
+  
+  resources :questions
 
   get "/sign-in" => "sessions#new"
   post "/sign-in" => "sessions#create"
