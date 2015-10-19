@@ -11,7 +11,7 @@ describe User do
   it { should have_many :answers }
 
   it 'is not admin by default' do
-    @user.is_admin?.should eq false
+    expect(@user.is_admin?).to eq false
   end
 
   it 'returns correct username' do
