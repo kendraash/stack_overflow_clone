@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      flash[:notice] = "Welcome to the site!"
+      flash[:notice] = "Welcome to the site, #{@user.username}!"
       redirect_to sign_in_path
 
     else

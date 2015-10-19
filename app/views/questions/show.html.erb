@@ -1,8 +1,4 @@
-
-
 <h3><%= @question.title %>, By: <%= @question.user.username %></h3>
-
-
 
 <% @answers.each do |answer| %>
   <pre>
@@ -13,4 +9,10 @@
   <hr>
 <% end %>
 
-<%= link_to "Add Answer", new_question_answer_path(@question) %>
+<% if current_user %>
+  <%= link_to "Add Answer", new_question_answer_path(@question) %>
+<% else %>
+ <p>
+   <%= link_to 'Sign In', sign_in_path %> to Answer this Question
+ </p>
+<% end %>

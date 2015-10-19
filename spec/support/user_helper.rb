@@ -1,7 +1,7 @@
 module  UserHelper
   def login(user)
     visit root_path
-    click_on "Sign In"
+    find('#nav-sign-in').click
     fill_in 'Email', :with => user.email
     fill_in 'Password', :with => user.password
     click_button "Sign In"
