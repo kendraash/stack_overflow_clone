@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  validates_presence_of :username, :email
+  has_many :questions
   attr_accessor :password
   validates_confirmation_of :password
   before_save :encrypt_password
