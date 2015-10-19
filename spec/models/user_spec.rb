@@ -25,4 +25,13 @@ describe User do
   it 'returns correct password' do
     expect(@user.password).to eq 'password'
   end
+
+  it 'can authenticate' do
+    expect(User.authenticate(@user.email, @user.password)).to eq @user
+  end
+
+  it 'returns nil if authentication fails' do
+    expect(User.authenticate('foo@bar.com', @user.password)).to eq nil
+    expect(User.authenticate(@user.email, 'foo')).to eq nil
+  end
 end

@@ -2,8 +2,8 @@ require 'rails_helper'
 
 describe 'the add a user process' do
   password = 'password'
-  it 'can add a user' do
 
+  it 'can add a user' do
     visit users_path
     click_on 'Sign Up'
     fill_in 'Username', :with => 'Bernie Sanders'
