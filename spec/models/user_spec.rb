@@ -21,4 +21,8 @@ describe User do
   it 'returns correct email' do
     expect(@user.email).to eq 'bernie@sanders.com'
   end
+
+  it 'returns correct password' do
+    expect(@user.password).to eq 'password'
+  end
 end
