@@ -6,7 +6,6 @@ describe 'the add a user process' do
     @password = 'password'
   end
 
-
   it 'can add a user' do
     visit users_path
     click_on 'Sign Up'
