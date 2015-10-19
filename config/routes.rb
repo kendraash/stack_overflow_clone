@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   post "/sign-in" => "sessions#create"
   get "/sign-out" => "sessions#destroy", as: :sign_out
 
+  root :to => 'questions#index'
 end

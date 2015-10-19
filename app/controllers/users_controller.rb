@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
     if @user.save
       flash[:notice] = "Welcome to the site!"
-      redirect_to user_path(@user)
+      redirect_to sign_in_path
 
     else
       flash[:alert] = "There was a problem creating your account. Please try again."
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
   end
-  
+
   private
 
   def user_params

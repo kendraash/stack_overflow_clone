@@ -7,9 +7,28 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">Stack Overflow</a>
+      </div>
+
+       <ul class="nav navbar-nav">
+        <% if current_user %>
+          <li><%= link_to "Sign Out", sign_out_path %></li>
+        <% else %>
+          <li><%= link_to "Sign Up", new_user_path %></li>
+          <li><%= link_to "Sign In", sign_in_path %></li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+
   <%= flash[:alert] %>
   <%= flash[:notice] %>
-  <%= yield %>
+  <div class="container">
+    <%= yield %>
+  </div>
 
 </body>
 </html>

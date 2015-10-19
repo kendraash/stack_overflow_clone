@@ -1,8 +1,13 @@
-<%= @question.title %>, By: <%= @question.user.username %>
+
+
+<h3><%= @question.title %>, By: <%= @question.user.username %></h3>
+
 
 
 <% @answers.each do |answer| %>
-  <%= answer.content %>By: <%= answer.user.username %>
+  <p>
+    <%= answer.content %> By: <%= answer.user.username %>
+  </p>  
 <% end %>
 
 <%= link_to "Add Answer", new_question_answer_path(@question) %>
