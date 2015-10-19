@@ -13,8 +13,8 @@ describe 'the add a user process' do
     fill_in 'Email', :with => 'bernie@sanders.com'
     fill_in 'Password', :with => @password
     fill_in 'Password confirmation', :with => @password
-    click_on 'Sign Up'
-    expect(page).to have_content 'Bernie Sanders'
+    click_button 'Sign Up'
+    expect(page).to have_content 'Email' # takes user to sign in page
   end
 
   it 'displays errors when the form password and password confirmation do not match' do
@@ -23,14 +23,14 @@ describe 'the add a user process' do
     fill_in 'Username', :with => 'Bernie Sanders'
     fill_in 'Email', :with => 'bernie@sanders.com'
     fill_in 'Password', :with => @password
-    click_on 'Sign Up'
+    click_button 'Sign Up'
     expect(page).to have_content "There was a problem creating your account"
   end
 
   it 'displays errors when the form is incomplete' do
     visit users_path
     click_on 'Sign Up'
-    click_on 'Sign Up'
+    click_button 'Sign Up'
     expect(page).to have_content "errors"
   end
 
@@ -39,7 +39,7 @@ describe 'the add a user process' do
     click_on "Sign In"
     fill_in 'Email', :with => @user.email
     fill_in 'Password', :with => @user.password
-    click_on "Sign In"
+    click_button "Sign In"
     expect(page).to have_content @user.username
   end
 
@@ -48,12 +48,13 @@ describe 'the add a user process' do
     click_on "Sign In"
     fill_in 'Email', :with => @user.email
     fill_in 'Password', :with => 'foo'
-    click_on "Sign In"
+    click_button "Sign In"
     expect(page).to have_content 'There was a problem logging you in'
   end
 
   it 'allows a user to sign out' do
     visit user_path(@user)
+    login(@user)
     click_on 'Sign Out'
     expect(page).to have_content 'You\'ve been logged out successfully.'
   end

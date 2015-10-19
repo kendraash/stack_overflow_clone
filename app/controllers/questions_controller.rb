@@ -6,11 +6,12 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
     @question.user = current_user
-    unless @question.title.scan(/[?]/).any?
-      @question.title += "?"
-    end
 
     if @question.save
+      unless @question.title.scan(/[?]/).any?
+        @question.title += "?"
+        @question.save
+      end
       flash[:notice] = "Question added successfully!"
       redirect_to questions_path
     else
