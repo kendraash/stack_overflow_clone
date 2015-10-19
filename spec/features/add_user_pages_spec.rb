@@ -30,4 +30,14 @@ describe 'the add a user process' do
     click_on 'Sign Up'
     expect(page).to have_content "errors"
   end
+
+  it 'allows a user to sign in' do
+    visit users_path
+    @user = FactoryGirl.create(:user)
+    click_on "Sign In"
+    fill_in 'Email', :with => @user.email
+    fill_in 'Password', :with => @user.password
+    click_on "Sign In"
+    expect(page).to have_content @user.username
+  end
 end
