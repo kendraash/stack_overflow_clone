@@ -8,4 +8,8 @@ FactoryGirl.define do
   factory(:question) do
     title('Best kind of dog?')
   end
+
+  factory(:answer) do
+    content('Bernedoodle')
+  end
 end
