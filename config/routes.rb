@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  resources :users do
-    resources :questions
-  end
+  resources :users
 
   resources :questions
 
@@ -14,4 +12,10 @@ Rails.application.routes.draw do
   get "/sign-out" => "sessions#destroy", as: :sign_out
 
   root :to => 'questions#index'
+
+  get "/admin" => "admin#index"
+  # namespace :admin do
+  #   get '', to: 'dashboard#index', as: '/'
+  # end
+  
 end

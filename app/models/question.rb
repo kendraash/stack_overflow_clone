@@ -16,6 +16,10 @@ class Question<ActiveRecord::Base
     return total
   end
 
+  def sorted_answers
+    self.answers.sort_by { |a| (a.vote_count) }.reverse!
+  end
+
   private
   def append_question_mark
     unless self.title.scan(/[?]/).any?

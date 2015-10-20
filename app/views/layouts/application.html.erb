@@ -15,6 +15,9 @@
 
        <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
+          <% if current_user.is_admin %>
+            <li><%= link_to 'Admin', admin_path %></li>
+          <% end %>
           <li><%= link_to 'Your Profile', user_path(current_user) %></li>
           <li><%= link_to "Sign Out", sign_out_path, {:id => "nav-sign-out"} %></li>
         <% else %>
