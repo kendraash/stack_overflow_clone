@@ -37,3 +37,31 @@ describe 'the vote on a question process' do
     expect(page).to have_content 'Current Votes: 1'
   end
 end
+
+describe 'the update a question process' do
+  before do
+    @admin = FactoryGirl.create(:user)
+    @admin.is_admin = true
+    @admin.save
+    login(@admin)
+    @question = FactoryGirl.create(:question)
+    @question.user = @admin
+    @question.save
+  end
+
+  it 'can edit a question if admin' do
+    visit admin_path
+    find('.edit-question').click
+    fill_in 'Title', :with => 'new title'
+    click_on 'Ask Question'
+    expect(page).to have_content 'new title'
+  end
+
+  it 'shows errors if title is empty' do
+    visit admin_path
+    find('.edit-question').click
+    fill_in 'Title', :with => ''
+    click_on 'Ask Question'
+    expect(page).to have_content 'errors'
+  end
+end
