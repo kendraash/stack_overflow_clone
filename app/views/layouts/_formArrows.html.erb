@@ -1,0 +1,9 @@
+<%= form_for object do |f| %>
+  <%= hidden_field(:f, :votes, :value => '1') %>
+  <%= image_submit_tag('upArrow.png', :class => "arrow-icon", :id => 'up-vote') %>
+<% end %>
+
+<%= form_for object do |f| %>
+  <%= hidden_field(:f, :votes, :value => '-1') %>
+  <%= image_submit_tag('downArrow.png', :class => "arrow-icon", :id => 'down-vote') %>
+<% end %>

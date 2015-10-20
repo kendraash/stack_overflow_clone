@@ -1,16 +1,40 @@
-<h3><%= @question.title %>, By: <%= @question.user.username %></h3>
+<h3>Question</h3>
+<div class="row">
+  <div class="col-xs-2">
+    <%= render 'layouts/formArrows', :object => @question %>
+  </div>
+  <div class="col-xs-10">
+    <h3>
+      <%= @question.title %>, By: <%= @question.user.username %>
+      <small>Current Votes: <%= @question.votes %></small>
+    </h3>
+  </div>
+</div>
+<hr>
 
+<h3>Answers</h3>
 <% @answers.each do |answer| %>
-  <pre>
-    <%= answer.content %>
-  </pre>
-  By: <%= answer.user.username %>
-  <i><%= answer.created_at.strftime("created on %m/%d/%Y at %I:%M%p") %></i>
-  <hr>
+  <div class="row">
+    <div class="col-xs-2">
+      <%= render 'layouts/formArrows', :object => [@question, answer] %>
+    </div>
+    <div class="col-xs-10">
+      <pre>
+        <%= answer.content %>
+      </pre>
+      By: <%= answer.user.username %>
+      <i><%= answer.created_at.strftime("created on %m/%d/%Y at %I:%M%p") %></i>
+      <strong>Current Votes: <%= answer.votes %></strong>
+      <hr>
+    </div>
+  </div>
 <% end %>
 
+<hr>
 <% if current_user %>
-  <%= link_to "Add Answer", new_question_answer_path(@question) %>
+  <h3>
+    <%= link_to "Add Answer", new_question_answer_path(@question) %>
+  </h3>
 <% else %>
  <p>
    <%= link_to 'Sign In', sign_in_path %> to Answer this Question
