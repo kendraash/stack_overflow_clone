@@ -514,7 +514,6 @@
         3,
         3,
         null,
-        null,
         null
       ],
       "/Users/Guest/Desktop/stack_overflow_clone/app/models/answer.rb": [
@@ -1093,6 +1092,6 @@
         null
       ]
     },
-    "timestamp": 1445382441
+    "timestamp": 1445384580
   }
 }

@@ -9,6 +9,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'bcrypt'
 gem 'bootstrap-sass'
+gem "letter_opener"
 
 group :development do
   gem 'byebug'
@@ -21,7 +22,6 @@ group :test, :development do
   gem 'rspec-rails'
   gem 'launchy'
   gem 'pry'
-  gem "letter_opener"
 end
 
 group :test do
