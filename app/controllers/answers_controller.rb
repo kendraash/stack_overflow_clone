@@ -11,6 +11,7 @@ class AnswersController<ApplicationController
     @answer.user = current_user
 
     if @answer.save
+      UserMailer.question_answered(@question.user, @question, @answer).deliver_now
       redirect_to question_path(@question)
     else
       render :new

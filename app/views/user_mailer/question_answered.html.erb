@@ -1,0 +1,10 @@
+<h1>UserMailer#thank_you_question</h1>
+
+<p>
+  <%= @greeting %>, <%=  @user.username %>
+  Question:
+  <%= @question.title %>
+  Answer:
+  <%= @answer.content %>
+  By: <%= @answer.user.username %>
+</p>

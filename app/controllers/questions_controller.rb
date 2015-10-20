@@ -8,6 +8,7 @@ class QuestionsController < ApplicationController
     @question.user = current_user
 
     if @question.save
+      UserMailer.thank_you_question(current_user).deliver_now
       flash[:notice] = "Question added successfully!"
       redirect_to questions_path
     else
