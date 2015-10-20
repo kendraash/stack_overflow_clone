@@ -20,7 +20,13 @@ class AnswersController<ApplicationController
   def update
     @question = Question.find(params[:question_id])
     @answer = Answer.find(params[:id])
-    @answer.update(votes: (@answer.votes + (params[:f][:votes]).to_i))
+
+    @vote = Vote.where(user_id: current_user.id, votable_id: @answer.id)
+    if @vote.any?
+      flash[:notice] = 'You\'ve already voted.'
+    else
+      @answer.votes.create(count: params[:f][:votes], user_id: current_user.id, votable_id: @answer.id)
+    end
     redirect_to question_path(@question)
   end
 

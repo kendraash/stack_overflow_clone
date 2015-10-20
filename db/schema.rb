@@ -11,14 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151020165251) do
+ActiveRecord::Schema.define(version: 20151020190127) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "answers", force: :cascade do |t|
     t.text     "content"
-    t.integer  "votes",       default: 0
     t.integer  "user_id"
     t.integer  "question_id"
     t.datetime "created_at"
@@ -30,7 +29,6 @@ ActiveRecord::Schema.define(version: 20151020165251) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "votes",      default: 0
   end
 
   create_table "users", force: :cascade do |t|
@@ -40,5 +38,14 @@ ActiveRecord::Schema.define(version: 20151020165251) do
     t.string  "email"
     t.boolean "is_admin",      default: false
   end
+
+  create_table "votes", force: :cascade do |t|
+    t.integer "count"
+    t.integer "user_id"
+    t.integer "votable_id"
+    t.string  "votable_type"
+  end
+
+  add_index "votes", ["votable_type", "votable_id"], name: "index_votes_on_votable_type_and_votable_id", using: :btree
 
 end
