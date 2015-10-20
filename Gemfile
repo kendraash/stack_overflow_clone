@@ -21,6 +21,7 @@ group :test, :development do
   gem 'rspec-rails'
   gem 'launchy'
   gem 'pry'
+  gem "letter_opener"
 end
 
 group :test do

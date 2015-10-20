@@ -8,8 +8,8 @@ class UsersController < ApplicationController
 
     if @user.save
       flash[:notice] = "Welcome to the site, #{@user.username}!"
+      UserMailer.signup_confirmation(@user).deliver_now
       redirect_to sign_in_path
-
     else
       flash[:alert] = "There was a problem creating your account. Please try again."
       render :new
