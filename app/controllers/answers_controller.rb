@@ -32,6 +32,17 @@ class AnswersController<ApplicationController
     end
   end
 
+  def edit
+    @question = Question.find(params[:question_id])
+    @answer = Answer.find(params[:id])
+  end
+
+  def destroy
+    @question = Question.find(params[:question_id])
+    @answer = Answer.find(params[:id])
+    @answer.destroy
+    redirect_to admin_path
+  end
 
   private
   def answer_params
