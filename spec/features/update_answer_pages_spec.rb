@@ -35,4 +35,12 @@ describe 'the vote on an answer process' do
     expect(page).to have_content 'Current Votes: -1'
     # expect(@question.votes).to eq -1
   end
+
+  it 'doesn\'t allow user to vote if already voted' do
+    visit question_path(@question)
+    find('.answer-voting #up-vote').click
+    find('.answer-voting #up-vote').click
+    expect(page).to have_content 'You\'ve already voted'
+    expect(page).to have_content 'Current Votes: 1'
+  end
 end
