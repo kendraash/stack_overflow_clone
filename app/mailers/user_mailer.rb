@@ -24,6 +24,5 @@ class UserMailer < ApplicationMailer
     @question = question
     @answer = answer
     mail to: user.email, subject: "Question Answered"
-
   end
 end

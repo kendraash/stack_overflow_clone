@@ -2,6 +2,6 @@
 
  <%= form_for [@question, @answer] do |f| %>
   <%= f.label :content %>
-  <%= f.text_area :content %>
+  <%= f.text_area :content, :autofocus => 'autofocus' %>
   <%= f.submit "Add Answer" %>
 <% end %>

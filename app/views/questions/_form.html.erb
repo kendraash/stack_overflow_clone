@@ -2,6 +2,6 @@
 
 <%= form_for @question do |f| %>
   <%= f.label :title %>
-  <%= f.text_field :title %>
+  <%= f.text_field :title, :autofocus => 'autofocus' %>
   <%= f.submit "Ask Question"%>
 <% end %>
