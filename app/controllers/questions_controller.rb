@@ -26,21 +26,14 @@ class QuestionsController < ApplicationController
 
   def update
     @question = Question.find(params[:id])
-    if params[:f]
-      vote_count = params[:f][:votes]
-      @vote = Vote.where(user_id: current_user.id, votable_id: @question.id, votable_type: 'Question')
-      if @vote.any?
-        flash[:notice] = 'You\'ve already voted.'
-      else
-        @question.votes.create(count: vote_count, user_id: current_user.id, votable_id: @question.id, votable_type: 'Question')
-      end
-       redirect_to question_path(@question)
-    else
+    if params[:f] # if voting
+      vote_helper params[:f][:votes]
+    else # normal model update
       if @question.update(question_params)
         redirect_to admin_path
-     else
+      else
        render :edit
-     end
+      end
     end
   end
 
@@ -60,5 +53,15 @@ class QuestionsController < ApplicationController
   private
   def question_params
     params.require(:question).permit(:title)
+  end
+
+  def vote_helper(vote_count)
+    @vote = Vote.where(user_id: current_user.id, votable_id: @question.id, votable_type: 'Question')
+    if @vote.any?
+      flash[:notice] = 'You\'ve already voted.'
+    else
+      @question.votes.create(count: vote_count, user_id: current_user.id, votable_id: @question.id, votable_type: 'Question')
+    end
+     redirect_to question_path(@question)
   end
 end
