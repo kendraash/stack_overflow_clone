@@ -23,7 +23,7 @@ class UserMailer < ApplicationMailer
     @user = user
     @question = question
     @answer = answer
-    mail to: user.email, subject: "Question Submitted"
+    mail to: user.email, subject: "Question Answered"
 
   end
 end
