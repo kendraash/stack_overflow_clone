@@ -4,4 +4,13 @@ class Question<ActiveRecord::Base
   has_many :answers
 
   default_scope {order('created_at DESC')}
+
+  before_save :append_question_mark
+
+  private
+  def append_question_mark
+    unless self.title.scan(/[?]/).any?
+      self.title += "?"
+    end
+  end
 end

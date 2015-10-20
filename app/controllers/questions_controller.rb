@@ -8,10 +8,6 @@ class QuestionsController < ApplicationController
     @question.user = current_user
 
     if @question.save
-      unless @question.title.scan(/[?]/).any?
-        @question.title += "?"
-        @question.save
-      end
       flash[:notice] = "Question added successfully!"
       redirect_to questions_path
     else
